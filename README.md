@@ -11,6 +11,6 @@ these inner packages has a corresponding subchapter in chapter `Basics`.
 
 ## Package Contents
 Inside a leaf package there are `.kt` files, each demonstrating an aspect of
-Kotlin. For example [Numbers.kt](https://github.com/MasoodFallahpoor/KotlinSqueezed/blob/master/src/main/kotlin/ir/fallahpoor/kotlinsqueezed/basics/_1basicTypes/_1Numbers.kt)
+Kotlin. For example [Numbers.kt](https://github.com/MasoodFallahpoor/KotlinSqueezed/blob/master/src/main/kotlin/ir/fallahpoor/kotlinsqueezed/_1basics/_1basicTypes/_1Numbers.kt)
 is all about numeric types of Kotlin.
 
