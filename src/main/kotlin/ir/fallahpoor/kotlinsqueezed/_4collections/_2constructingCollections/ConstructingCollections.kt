@@ -1,6 +1,5 @@
 package ir.fallahpoor.kotlinsqueezed._4collections._2constructingCollections
 
-import ir.fallahpoor.kotlinsqueezed.Person
 import java.util.*
 import kotlin.collections.HashSet
 
