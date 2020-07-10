@@ -35,10 +35,10 @@ fun main() {
      */
 
     /**
-     * Essentially, coroutines are light-weight threads. They are launched with 'launch' coroutine
-     * builder in a context of some 'CoroutineScope'. Here we launched a new coroutine in the
-     * GlobalScope, meaning that the lifetime of the coroutine is limited only by the lifetime
-     * of the whole application.
+     * Essentially, coroutines are light-weight THREADS. They are launched with 'launch' coroutine
+     * builder in a context of some 'CoroutineScope'. So each and every coroutine belongs to some
+     * CoroutineScope. Here we launched a new coroutine in the GlobalScope, meaning that the lifetime
+     * of the coroutine is limited by the lifetime of the whole application.
      */
 
     /***********************************************
