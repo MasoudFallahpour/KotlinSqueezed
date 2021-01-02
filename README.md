@@ -1,4 +1,4 @@
-KotlinSqueezed (work-in-progress)
+KotlinSqueezed
 ================
 KotlinSqueezed is a trimmed version of [Kotlin's official language guide](https://kotlinlang.org/docs/reference) in form of a
 Gradle-based Kotlin project.
