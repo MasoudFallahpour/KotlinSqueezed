@@ -9,24 +9,22 @@ import kotlinx.coroutines.runBlocking
 
 fun main() {
 
-    /*************
-     *  Fan-Out  *
-     *************/
-
     /**
-     * Multiple coroutines may receive from the same channel, distributing work between themselves. Let us start
-     * with a producer coroutine that is periodically producing integers (ten numbers per second):
+     * Multiple coroutines may receive from the same channel, distributing work between themselves. Let us
+     * start with a producer coroutine that is periodically producing integers (ten numbers per second).
      */
-    fun CoroutineScope.produceNums() = produce<Int> {
-        var x = 1 // start from 1
+
+    fun CoroutineScope.produceNumbers() = produce {
+        var x = 1
         while (true) {
-            send(x++) // produce next
+            send(x++)
             delay(100) // wait 0.1s
         }
     }
 
     /**
-     * Then we can have several processor coroutines. In this example, they just print their id and received number:
+     * Then we can have several processor coroutines. In this example, they just print their id and
+     * received number.
      */
     fun CoroutineScope.launchProcessor(id: Int, channel: ReceiveChannel<Int>) = launch {
         for (msg in channel) {
@@ -35,12 +33,14 @@ fun main() {
     }
 
     /**
-     * Now let us launch five processors and let them work for almost a second. See what happens:
+     * Now let us launch five processors and let them work for almost a second and see what happens.
      */
 
     runBlocking {
-        val producer = produceNums()
-        repeat(5) { launchProcessor(it, producer) }
+        val producer = produceNumbers()
+        repeat(5) {
+            launchProcessor(it, producer)
+        }
         delay(950)
         producer.cancel() // cancel producer coroutine and thus kill them all
     }

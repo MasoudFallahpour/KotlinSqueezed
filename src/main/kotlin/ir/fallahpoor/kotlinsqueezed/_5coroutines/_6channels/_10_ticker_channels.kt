@@ -7,19 +7,16 @@ import kotlinx.coroutines.withTimeoutOrNull
 
 fun main() {
 
-    /*********************
-     *  Ticker Channels  *
-     *********************/
-
     /**
-     * Ticker channel is a special rendezvous channel that produces Unit every time given delay passes since last
-     * consumption from this channel. Though it may seem to be useless standalone, it is a useful building block
-     * to create complex time-based produce pipelines and operators that do windowing and other time-dependent
-     * processing.
+     * Ticker channel is a special rendezvous channel that produces 'Unit' every time given delay passes
+     * since last consumption from this channel. Though it may seem to be useless standalone, it is a
+     * useful building block to create complex time-based produce pipelines and operators that do windowing
+     * and other time-dependent processing.
      *
-     * To create such channel use a factory method ticker. To indicate that no further elements are needed use
-     * ReceiveChannel.cancel method on it.
+     * To create such channel use a factory method ticker. To indicate that no further elements are needed
+     * use ReceiveChannel.cancel() method on it.
      */
+
     runBlocking {
         val tickerChannel = ticker(delayMillis = 100, initialDelayMillis = 0) // create ticker channel
         var nextElement = withTimeoutOrNull(1) { tickerChannel.receive() }
@@ -41,12 +38,12 @@ fun main() {
         nextElement = withTimeoutOrNull(60) { tickerChannel.receive() }
         println("Next element is ready in 50ms after consumer pause in 150ms: $nextElement")
 
-        tickerChannel.cancel() // indicate that no more elements are needed
+        tickerChannel.cancel()
     }
 
     /**
-     * Note that ticker is aware of possible consumer pauses and, by default, adjusts next produced element delay
-     * if a pause occurs, trying to maintain a fixed rate of produced elements.
+     * Note that ticker is aware of possible consumer pauses and, by default, adjusts next produced element
+     * delay if a pause occurs, trying to maintain a fixed rate of produced elements.
      */
 
 }

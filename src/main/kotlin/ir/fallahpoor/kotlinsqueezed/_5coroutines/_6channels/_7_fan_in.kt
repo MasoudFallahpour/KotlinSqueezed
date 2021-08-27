@@ -9,14 +9,11 @@ import kotlinx.coroutines.runBlocking
 
 fun main() {
 
-    /************
-     *  Fan-in  *
-     ************/
-
     /**
      * Multiple coroutines may send to the same channel. For example, let us have a channel of strings, and a
-     * suspending function that repeatedly sends a specified string to this channel with a specified delay:
+     * suspending function that repeatedly sends a specified string to this channel with a specified delay.
      */
+
     suspend fun sendString(channel: SendChannel<String>, s: String, time: Long) {
         while (true) {
             delay(time)
@@ -25,9 +22,10 @@ fun main() {
     }
 
     /**
-     * Now, let us see what happens if we launch a couple of coroutines sending strings (in this example we launch
-     * them in the context of the main thread as main coroutine's children):
+     * Now, let us see what happens if we launch a couple of coroutines sending strings (in this example
+     * we launch them in the context of the main thread as main coroutine's children).
      */
+
     runBlocking {
         val channel = Channel<String>()
         launch { sendString(channel, "foo", 200L) }
